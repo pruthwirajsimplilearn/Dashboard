@@ -15,12 +15,13 @@ export const NavBar = () => {
                     </li>
                 </ul>
                 <div className="navbar-nav ml-auto d-flex">
-                    <li className="nav-item">
-                        <a className="nav-link" href="/login">Login</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link " href="/register">Sign Up</a>
-                    </li>
+                   {localStorage.getItem('token') ? <li className="nav-item">
+                        <a className="nav-link" href="/logout">Logout</a>
+                        </li> : <li className="nav-item">
+                            <a className="nav-link" href="/login">Login</a>
+                            </li>
+                            
+                    }
                     </div>
             </div>
         </nav>

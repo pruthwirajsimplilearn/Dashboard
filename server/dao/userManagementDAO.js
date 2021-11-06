@@ -13,12 +13,18 @@ export default class UserManagementDAO {
     } catch (e) {
       console.error(`Error: ${e}`)
     }
+  
   }
 
-  static async addUser(username,password) {
+  static async getUser(email) {
+    return await user.findOne({email: email})
+  }
+
+  static async addUser(username,email,password) {
     try {
       const personDoc = {
         name: username,
+        email: email,
         password: password
       }
 

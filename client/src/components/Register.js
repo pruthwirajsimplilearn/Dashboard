@@ -4,6 +4,7 @@ import DataService from "../services/service"
 function Register() {
     const [data, setData] = useState({
         "name": "",
+        "email": "",
         "password": ""
     })
 
@@ -18,11 +19,13 @@ function Register() {
         e.preventDefault()
         DataService.regsiterUser(data)
             .then(res => {
-                if (res.status === 200) {
+                if (res.status === 201) {
                     alert('Successfully Registered. Login to Continue')
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log("Error: ",err.json())
+            })
     }
     return (
         <div className="container">
@@ -33,10 +36,17 @@ function Register() {
                     <input type="text" name="name" className="form-control" id="uname" onChange={handleChange} />
                 </div>
                 <div className="mb-3">
+                    <label htmlFor="email" className="form-label">User Email</label> 
+                    <input type="email" name="email" className="form-control" id="email" onChange={handleChange} />
+                </div>   
+                <div className="mb-3">
                     <label htmlFor="upwd" className="form-label">User Password</label>
                     <input type="password" name="password" className="form-control" id="upwd" onChange={handleChange} />
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={handleRegsiter}>Register</button>
+                <div>
+                    <p>Already have an account? <a href="/login">Login</a></p>
+                </div>
             </form>
         </div>
     )
