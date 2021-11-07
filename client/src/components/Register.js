@@ -24,7 +24,7 @@ function Register() {
                 }
             })
             .catch(err => {
-                console.log("Error: ",err.json())
+                alert(err)
             })
     }
     return (

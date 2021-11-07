@@ -12,6 +12,9 @@ function App() {
       <Route path="/" exact>
         <Home/>
       </Route>
+      <Route path="/home" exact>
+        <Home/>
+      </Route>
       <Route path="/register">
         <Register/>
       </Route>

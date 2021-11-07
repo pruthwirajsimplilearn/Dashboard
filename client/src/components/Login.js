@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DataService from "../services/service"
 
 function Login() {
 
@@ -13,6 +14,24 @@ function Login() {
             [e.target.name]: e.target.value
         })
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        DataService.loginUser(data)
+        .then(res => {
+            const user = res.data.user;
+            localStorage.setItem("token",user.token);
+            alert("Login Successful");
+            window.location.href = "/";
+        }
+        )
+        .catch(err => {
+            console.log("Error: ",err)
+        }
+        );
+
+        
+    }
+
     return (
         <div className="container">
             <form style={{ "margin": "2em" }} method="post">
@@ -26,7 +45,7 @@ function Login() {
                     <label htmlFor="upwd" className="form-label">User Password</label>
                     <input type="password" name="password" className="form-control" id="upwd" onChange={handleChange}/>
                 </div>
-                <button type="submit" className="btn btn-primary" >Login</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit} >Login</button>
                 <div>
                     <p>Don't have an account? <a href="/register">Register</a></p>
                 </div>
