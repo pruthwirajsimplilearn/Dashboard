@@ -21,6 +21,7 @@ function Register() {
             .then(res => {
                 if (res.status === 201) {
                     alert('Successfully Registered. Login to Continue')
+                    window.location.href = "/login";
                 }
             })
             .catch(err => {
