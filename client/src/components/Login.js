@@ -1,3 +1,4 @@
+import { useHistory } from "react-router";
 import { useState } from "react";
 import DataService from "../services/service";
 
@@ -49,9 +50,9 @@ const styles = {
         marginBottom: "10px",
     },
 };
-
 function Login() {
     const [error, setError] = useState("");
+    const history = useHistory()
     const [data, setData] = useState({
         "email": "",
         "password": ""
@@ -95,7 +96,6 @@ function Login() {
                 <div className="col-md-6 d-none d-md-block d-lg-block">
                     <div>
                         <img src="assest/man.svg" alt="logo" style={{ width: "100%" }} />
-
                     </div>
                 </div>
                 <div className="col-md-6">
@@ -125,13 +125,9 @@ function Login() {
                         </form>
                     </div>
                 </div>
-
-
-            </div>
-
-        </div>
-
-        </div>
+                </div>
+                </div>
+                </div>
     )
 }
 

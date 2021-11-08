@@ -87,4 +87,17 @@ export default class UserController {
         res.status(500).json({ error: e.message })
       }
     }
+
+    static async loginValidationByCred(req,res,next)
+    {
+      console.log(req.query);
+      try {
+        const name = req.query.name;
+        const password = req.query.password;
+        const userResponse = await UserManagementDAO.loginValidationByCred(name,password)
+        res.json(userResponse)
+      } catch (error) {
+        res.status(500).json({ error: error.message })
+      }
+    }
 }

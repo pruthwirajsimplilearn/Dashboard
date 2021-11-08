@@ -1,5 +1,5 @@
 import { useState } from "react"
-import DataService from "../services/service"
+import DataServices from "../services/service"
 
 const styles = {
     lockicon: {
@@ -90,7 +90,7 @@ function Register() {
                 setError("Password must be atleast 5 characters long")
             }
             else {
-                DataService.regsiterUser(data)
+               DataServices.iterUser(data)
             .then(res => {
                 if (res.status === 201) {
                     alert('Successfully Registered. Login to Continue')

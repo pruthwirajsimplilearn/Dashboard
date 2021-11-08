@@ -34,4 +34,15 @@ export default class UserManagementDAO {
       return { error: e }
     }
   }
+
+  static async loginValidationByCred(name, password) {
+    try {
+      const query = { name: name, password: password };
+      const res = user.findOne(query)
+      return res
+    } catch (error) {
+      console.error(`Error deleting product: ${error}`);
+      return { error: error }
+    }
+  }
 }
