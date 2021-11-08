@@ -7,7 +7,7 @@ function Login() {
     const history = useHistory()
 
     const [data, setData] = useState({
-        "name": "",
+        "email": "",
         "password": ""
     })
 
@@ -17,24 +17,20 @@ function Login() {
             [e.target.name]: e.target.value
         })
     }
-
-    const handleLogin = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        DataServices.userLogin(data)
-            .then(res => {
-                console.log(res);
-                if (res.data !== null) {
-                    alert("login successfull")
-                    history.push('/')
-                }
-                else {
-                    alert("Wrong Credentials")
-                }
-            })
-            .catch(e => {
-                console.log("i am here");
-                console.log(e.message);
-            })
+        DataService.loginUser(data)
+        .then(res => {
+            const user = res.data.user;
+            localStorage.setItem("token",user.token);
+            alert("Login Successful");
+            window.location.href = "/";
+        }
+        )
+        .catch(err => {
+            console.log("Error: ",err)
+        }
+        );
     }
 
     return (
@@ -53,17 +49,21 @@ function Login() {
         //     </form>
         // </div>
         <div className="container">
-            <form style={{ "margin": "2em" }}>
-                <h4>USER LOGIN</h4>
+            <form style={{ "margin": "2em" }} method="post">
+                <h4>USER login</h4>
                 <div className="mb-3">
-                    <label htmlFor="uname" className="form-label">User Name</label>
-                    <input type="text" name="name" className="form-control" id="uname" onChange={handleChange} />
+                    <label htmlFor="email" className="form-label">User Email</label>
+                    <input type="email" name="email" className="form-control" id="email" onChange={handleChange}/>
                 </div>
+
                 <div className="mb-3">
-                    <label htmlFor="upwd" className="form-label">Password</label>
-                    <input type="password" name="password" className="form-control" id="upwd" onChange={handleChange} />
+                    <label htmlFor="upwd" className="form-label">User Password</label>
+                    <input type="password" name="password" className="form-control" id="upwd" onChange={handleChange}/>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleLogin}>Login</button><br />
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit} >Login</button>
+                <div>
+                    <p>Don't have an account? <a href="/register">Register</a></p>
+                </div>
             </form>
         </div>
     )
