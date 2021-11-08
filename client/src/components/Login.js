@@ -1,4 +1,3 @@
-import { useHistory } from "react-router";
 import { useState } from "react";
 import DataService from "../services/service";
 
@@ -57,7 +56,6 @@ function Login() {
         "email": "",
         "password": ""
     })
-
     const handleChange = (e) => {
         setData({
             ...data,

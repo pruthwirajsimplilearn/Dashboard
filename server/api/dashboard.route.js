@@ -9,5 +9,4 @@ router.route('/user').post(UserController.addUser)
 
 router.route('/login').post(UserController.login)
 
-
 export default router

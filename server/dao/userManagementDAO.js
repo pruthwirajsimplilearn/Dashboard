@@ -13,7 +13,6 @@ export default class UserManagementDAO {
     } catch (e) {
       console.error(`Error: ${e}`)
     }
-  
   }
 
   static async getUser(email) {
