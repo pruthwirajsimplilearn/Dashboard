@@ -53,18 +53,18 @@ function Login() {
         //     </form>
         // </div>
         <div className="container">
-          <form style={{ "margin": "2em" }}>
-            <h4>USER LOGIN</h4>
-            <div className="mb-3">
-              <label htmlFor="uname" className="form-label">User Name</label>
-              <input type="text" name="name" className="form-control" id="uname" onChange={handleChange} />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="upwd" className="form-label">Password</label>
-              <input type="password" name="password" className="form-control" id="upwd" onChange={handleChange} />
-            </div>
-            <button type="submit" className="btn btn-primary" onClick={handleLogin}>Login</button><br />            
-          </form>
+            <form style={{ "margin": "2em" }}>
+                <h4>USER LOGIN</h4>
+                <div className="mb-3">
+                    <label htmlFor="uname" className="form-label">User Name</label>
+                    <input type="text" name="name" className="form-control" id="uname" onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="upwd" className="form-label">Password</label>
+                    <input type="password" name="password" className="form-control" id="upwd" onChange={handleChange} />
+                </div>
+                <button type="submit" className="btn btn-primary" onClick={handleLogin}>Login</button><br />
+            </form>
         </div>
     )
 }
