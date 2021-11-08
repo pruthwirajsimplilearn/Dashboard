@@ -6,6 +6,7 @@ const router = express.Router()
 router.get("/",(req,res) => res.send('Hello Coder'))
 
 router.route('/user').post(UserController.addUser)
-router.route('/login').get(UserController.login)
+
+router.route('/login').post(UserController.login)
 
 export default router
