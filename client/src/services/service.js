@@ -5,7 +5,7 @@ class DataServices {
         return http.post('/user', data)
     }
     loginUser(data) {
-        return http.get('/user', data)
+        return http.post('/login', data)
     }
 }
 

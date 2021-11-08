@@ -90,11 +90,19 @@ function Register() {
                 setError("Password must be atleast 5 characters long")
             }
             else {
-               DataServices.iterUser(data)
+               DataServices.regsiterUser(data)
             .then(res => {
-                if (res.status === 201) {
+                if (res.data.success) {
                     alert('Successfully Registered. Login to Continue')
                     window.location.href = '/login'
+                }
+                else {
+                    alert(res.data.message)
+                    setData({
+                        "name": "",
+                        "email": "",
+                        "password": ""
+                    })
                 }
             })
             .catch(err => {
@@ -123,15 +131,15 @@ function Register() {
                 
                 <div className="mb-3">
                     <label htmlFor="uname" className="form-label">Full Name</label>
-                    <input placeholder="Enter Name" autocomplete="off" style={styles.input} type="text" name="name" className="form-control" id="uname" onChange={handleChange} />
+                    <input value={data.name} placeholder="Enter Name" autocomplete="off" style={styles.input} type="text" name="name" className="form-control" id="uname" onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label> 
-                    <input placeholder="Enter Email" autocomplete="off" style={styles.input} type="email" name="email" className="form-control" id="email" onChange={handleChange} />
+                    <input value={data.email} placeholder="Enter Email" autocomplete="off" style={styles.input} type="email" name="email" className="form-control" id="email" onChange={handleChange} />
                 </div>   
                 <div className="mb-3">
                     <label htmlFor="upwd" className="form-label">Password</label>
-                    <input placeholder="Enter Password" style={styles.input} type="password" name="password" className="form-control" id="upwd" onChange={handleChange} />
+                    <input value={data.password} placeholder="Enter Password" style={styles.input} type="password" name="password" className="form-control" id="upwd" onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                     <p style={styles.error}>{error}</p>

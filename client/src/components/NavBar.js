@@ -19,9 +19,11 @@ export const NavBar = () => {
             </div>
             <div className="navbar-nav ml-auto d-flex">
                    {localStorage.getItem('token') ? <li className="nav-item">
-                        <p className="nav-link" onClick={()=> localStorage.removeItem('token')}>Logout</p>
+                        <p className="btn btn-danger nav-link" onClick={()=> {localStorage.removeItem('token')
+                    window.location.reload()
+                    }}>Logout</p>
                         </li> : <li className="nav-item">
-                            <a className="nav-link" href="/login">Login</a>
+                            <a className="btn btn-primary nav-link" href="/login">Login</a>
                             </li>
                             
                     }

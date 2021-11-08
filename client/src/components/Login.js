@@ -74,10 +74,15 @@ function Login() {
 
             DataService.loginUser(data)
                 .then(res => {
+                    if(res.data.success){
                     const user = res.data.user;
                     localStorage.setItem("token", user.token);
                     alert("Login Successful");
                     window.location.href = "/";
+                    }
+                    else{
+                        alert(res.data.message);
+                    }
                 }
                 )
                 .catch(err => {
@@ -87,6 +92,13 @@ function Login() {
         }
 
 
+    }
+    const handleShowHide = () => {
+        if (document.getElementById("upwd").type === "password" && document.getElementById("checkbox").checked) {
+            document.getElementById("upwd").type = "text";
+        } else {
+            document.getElementById("upwd").type = "password";
+        }
     }
 
     return (
@@ -107,15 +119,16 @@ function Login() {
                         <form style={styles.form} method="post" >
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Email *</label>
-                                <input autocomplete="off" style={styles.input} type="email" name="email" placeholder="Enter Email" className="form-control" id="email" onChange={handleChange} />
+                                <input autocomplete="off" value={data.email} style={styles.input} type="email" name="email" placeholder="Enter Email" className="form-control" id="email" onChange={handleChange} />
                             </div>
 
                             <div className="mb-3">
                                 <label htmlFor="upwd" className="form-label">Password *</label>
-                                <input style={styles.input} type="password" placeholder="Enter Password" name="password" className="form-control" id="upwd" onChange={handleChange} />
+                                <input style={styles.input} value={data.password} type="password" placeholder="Enter Password" name="password" className="form-control" id="upwd" onChange={handleChange} />
                             </div>
 
                             <div>
+                                <input id="checkbox" type="checkbox" onChange={handleShowHide}/> Show Password
                                 <p style={styles.error}>{error}</p>
                             </div>
                             <button style={styles.button} type="submit" className="btn btn-primary" onClick={handleSubmit} >Login</button>
