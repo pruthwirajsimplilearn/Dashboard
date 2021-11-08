@@ -1,5 +1,5 @@
 import { useState } from "react"
-import DataService from "../services/service"
+import DataServices from "../services/service"
 
 function Register() {
     const [data, setData] = useState({
@@ -16,7 +16,7 @@ function Register() {
 
     const handleRegsiter = (e) => {
         e.preventDefault()
-        DataService.regsiterUser(data)
+        DataServices.regsiterUser(data)
             .then(res => {
                 if (res.status === 200) {
                     alert('Successfully Registered. Login to Continue')

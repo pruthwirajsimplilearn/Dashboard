@@ -3,8 +3,10 @@ import UserController from "./userController.js";
 
 const router = express.Router()
 
-router.route('/').get((req,res) => res.send('Hello World'))
+router.get("/",(req,res) => res.send('Hello World'))
 
 router.route('/user').post(UserController.addUser)
+
+router.route('/login').get(UserController.loginValidationByCred)
 
 export default router
