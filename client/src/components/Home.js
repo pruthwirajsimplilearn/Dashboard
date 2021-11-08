@@ -8,11 +8,8 @@ function Home() {
                     position: 'absolute', left: '50%', top: '45%',
                     transform: 'translate(-50%, -50%)'
                 }}>
-                <div className="col-lg-5">
-                    <Link to="/login"><button className="btn btn-success">Login Here</button></Link>
-                </div>
-                <div className="col-lg-4">
-                    <Link to="/register"><button className="btn btn-primary">Register Here</button></Link>
+                <div className="col-md-auto">
+                    <h1>Welcome to the <span className="text-primary"> Dashboard</span></h1>
                 </div>
             </div>
         </div>
