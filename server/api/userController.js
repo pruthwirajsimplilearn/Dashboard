@@ -2,7 +2,7 @@ import UserManagementDAO from "../dao/userManagementDAO.js"
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-export default class UserController {
+export default class UserController {  
   static async addUser(req, res, next) {
     try {
       const name = req.body.name;
@@ -86,17 +86,6 @@ export default class UserController {
     }
     catch (e) {
       res.status(500).json({ error: e.message })
-    }
-  }
-
-  static async loginValidationByCred(req, res, next) {
-    try {
-      const name = req.query.name;
-      const password = req.query.password;
-      const userResponse = await UserManagementDAO.loginValidationByCred(name, password)
-      res.json(userResponse)
-    } catch (error) {
-      res.status(500).json({ error: error.message })
     }
   }
 }

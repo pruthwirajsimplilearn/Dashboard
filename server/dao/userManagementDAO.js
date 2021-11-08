@@ -1,9 +1,10 @@
 import mongodb from "mongodb"
+import DashboardDAO from "./dashboard.DAO.js";
 const ObjectId = mongodb.ObjectId
 
 let user
 
-export default class UserManagementDAO {
+export default class UserManagementDAO extends DashboardDAO {
   static async injectDB(conn) {
     if (user) {
       return
@@ -16,10 +17,10 @@ export default class UserManagementDAO {
   }
 
   static async getUser(email) {
-    return await user.findOne({email: email})
+    return await user.findOne({ email: email })
   }
 
-  static async addUser(username,email,password) {
+  static async addUser(username, email, password) {
     try {
       const personDoc = {
         name: username,
